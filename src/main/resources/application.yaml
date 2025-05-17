@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: paws
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/disclose
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: update
+    properties:
+      hibernate:
+       jdbc.lob.non_contextual_creation: true
+       jakarta.persistence.entity-manager-factory-interface: jakarta.persistence.EntityManagerFactory
+
+server:
+    port: ${SERVER_PORT:8080}
+    address: ${SERVER_ADDRESS:localhost}
+    servlet:
+      context-path: ${CONTEXT_PATH:/v1/disclose}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
